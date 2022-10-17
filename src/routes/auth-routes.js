@@ -1,8 +1,14 @@
 import express from 'express';
-import {teste} from "authController.js";
+import {signUpIsValid, signInIsValid} from '../middlewares/joi-auth-middleware.js';
+import {signUp, signIn} from '../controllers/authController.js';
 
+import dotenv from 'dotenv';
+
+dotenv.config()
 const router = express.Router();
 
-router.get('/', teste);
+router.post('/signup', signUpIsValid, signUp);
+
+router.post('/signin', signInIsValid, signIn)
 
 export default router;
