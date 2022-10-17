@@ -1,6 +1,8 @@
 import connection from "../db/connection.js";
 import dotenv from 'dotenv';
 
+dotenv.config();
+
 async function userPage (req, res) {
     const { token } = res.locals;
 

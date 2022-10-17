@@ -6,11 +6,9 @@ function urlIsValid(req, res, next) {
 
     if (validation) {
         
-      console.log('boa')
       next()
     } else {
         res.status(422).send('url inválida')
-        console.log('ruim')
     }
     
 }

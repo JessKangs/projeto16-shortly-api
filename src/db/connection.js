@@ -13,5 +13,4 @@ const connection = new Pool({
 
 })
 
-//console.log(connection)
 export default connection;

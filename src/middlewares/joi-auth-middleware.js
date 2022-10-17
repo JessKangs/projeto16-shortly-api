@@ -20,8 +20,6 @@ const signUpSchema = joi.object({
     }).xor('password', 'access_token')
     .with('password', 'repeat_password');
 
-    console.log('middleware')
-
 function signUpIsValid(req, res, next) {
     const { name, email, password, repeat_password } = req.body
     
@@ -31,7 +29,7 @@ function signUpIsValid(req, res, next) {
         console.log(validation.error.details)
         res.status(422).send(validation.error)
     }
-    console.log('passou')
+  
     next()
 }
 

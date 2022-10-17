@@ -1,4 +1,7 @@
 import connection from "../db/connection.js";
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 async function getRanking (req, res) {
 
