@@ -14,6 +14,6 @@ server.use(urlRouter)
 server.use(usersRouter)
 server.use(rankings);
 
-server.listen(5000, () => {
-    console.log('Magic happens on 5000')
+server.listen(process.env.PORT, () => {
+    console.log(`Magic happens on ${process.env.PORT}`)
 })
