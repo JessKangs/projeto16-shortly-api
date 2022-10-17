@@ -7,7 +7,6 @@ const loginSchema = joi.object({
 
 const signUpSchema = joi.object({
     name: joi.string()
-        .alphanum()
         .min(3)
         .max(30)
         .required(),
@@ -28,9 +27,11 @@ function signUpIsValid(req, res, next) {
     if (validation.error) {
         console.log(validation.error.details)
         res.status(422).send(validation.error)
+    } else {
+
+    next()
     }
   
-    next()
 }
 
 function signInIsValid(req, res, next) {
@@ -41,9 +42,10 @@ function signInIsValid(req, res, next) {
     if (validation.error) {
         console.log(validation.error.details)
         res.status(422).send(validation.error)
+    } else {
+        next()
     }
 
-    next()
 }
 
 export {signUpIsValid, signInIsValid}

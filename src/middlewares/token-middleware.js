@@ -4,11 +4,13 @@ function hasToken (req, res, next) {
 
     if (!token) {
         return res.status(401).send('error');
+    } else {
+        res.locals.token = token;
+
+        next();
     }
 
-    res.locals.token = token;
-
-    next();
+   
 }
 
 export {hasToken};

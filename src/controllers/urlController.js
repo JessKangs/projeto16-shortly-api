@@ -43,18 +43,20 @@ async function openUrl (req, res) {
     const { shortUrl } = req.params;
 
     try {
-        const findUrl = (await connection.query(`SELECT * FROM links WHERE shortUrl = '${shortUrl}';`)).rows[0];
-
-        console.log(findUrl)
+       
+        const findUrl = (await connection.query(`SELECT * FROM links WHERE shorturl = '${shortUrl}';`)).rows[0];
 
         if (findUrl.length !== 0) {
 
             let update = findUrl.visitcount + 1;
 
             await connection.query(`UPDATE links SET visitCount = ${update} WHERE shortUrl = '${findUrl.shorturl}';`)
-        
-            res.status(200).send(findUrl)
-            
+   
+            res.redirect(200, `${findUrl.url}`)
+           
+           
+        } else {
+            res.status(404).send('erro')
         }
 
     } catch (error) {
